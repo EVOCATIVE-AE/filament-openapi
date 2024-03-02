@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Evocative\FilamentOpenAPI\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentOpenAPICommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-openapi';
 
     public $description = 'My command';
 
