@@ -1,0 +1,39 @@
+<?php
+
+namespace {{ resourceNamespace }}\OpenAPI\Handlers;
+
+use Evocative\FilamentOpenAPI\Handler;
+use {{ resourceNamespace }};
+use {{ resourceNamespace }}\OpenAPI\Transformers\{{ modelClass }}Transformer;
+use App\Models\{{ modelClass }};
+use Illuminate\Http\Request;
+
+class Create{{ modelClass }}Handler extends Handler
+{
+    public static ?string $uri = '/';
+
+    public static ?string $resource = {{ resourceClass }}::class;
+
+    public static function getMethod()
+    {
+        return 'POST';
+    }
+
+    /**
+     * Create new instance of {{ modelClass }}.
+     *
+     * @operationId {{ panel }}Create{{ modelClassPlural }}
+     *
+     * @tag {{ modelClass }}
+     */
+    public function handler(Create{{ modelClass }}Validator $request)
+    {
+        $resource = new {{ modelClass }}();
+
+        $resource->fill($request->all());
+
+        $resource->save();
+
+        return new {{ modelClass }}Transformer($resource);
+    }
+}

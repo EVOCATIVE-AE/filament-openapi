@@ -1,0 +1,37 @@
+<?php
+
+namespace {{ resourceNamespace }}\OpenAPI\Handlers;
+
+use Evocative\FilamentOpenAPI\Handler;
+use {{ resourceNamespace }};
+use {{ resourceNamespace }}\OpenAPI\Transformers\{{ modelClass }}Transformer;
+use App\Models\{{ modelClass }};
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Spatie\QueryBuilder\QueryBuilder;
+
+class Index{{ modelClass }}Handler extends Handler
+{
+    public static ?string $uri = '/';
+
+    public static ?string $resource = {{ resourceClass }}::class;
+
+    /**
+     * List available {{ modelClass }} instances.
+     *
+     * @operationId {{ panel }}Index{{ modelClass }}
+     *
+     * @tag {{ modelClass }}
+     *
+     * @return AnonymousResourceCollection<LengthAwarePaginator<{{ modelClass }}Transformer>>
+     */
+    public function handler(Request $request)
+    {
+        $results = QueryBuilder::for({{ modelClass }}::class)
+            ->paginate()
+            ->appends($request->query());
+
+        return {{ modelClass }}Transformer::collection($results);
+    }
+}

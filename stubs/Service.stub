@@ -1,0 +1,22 @@
+<?php
+
+namespace {{ resourceNamespace }}\OpenAPI;
+
+use Evocative\FilamentOpenAPI\OpenAPIService;
+use {{ resourceNamespace }};
+
+class {{ modelClass }}Service extends OpenAPIService
+{
+    protected static ?string $resource = {{ resourceClass }}::class;
+
+    public static function handlers(): array
+    {
+        return [
+            'index' => Handlers\Index{{ modelClass }}Handler::class,
+            'create' => Handlers\Create{{ modelClass }}Handler::class,
+            'show' => Handlers\Show{{ modelClass }}Handler::class,
+            'update' => Handlers\Update{{ modelClass }}Handler::class,
+            'delete' => Handlers\Delete{{ modelClass }}Handler::class,
+        ];
+    }
+}

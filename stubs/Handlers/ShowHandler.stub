@@ -1,0 +1,28 @@
+<?php
+
+namespace {{ resourceNamespace }}\OpenAPI\Handlers;
+
+use Evocative\FilamentOpenAPI\Handler;
+use {{ resourceNamespace }};
+use {{ resourceNamespace }}\OpenAPI\Transformers\{{ modelClass }}Transformer;
+use App\Models\{{ modelClass }};
+use Illuminate\Http\Request;
+
+class Show{{ modelClass }}Handler extends Handler
+{
+    public static ?string $uri = '/{resource}';
+
+    public static ?string $resource = {{ resourceClass }}::class;
+
+    /**
+     * Show instance of {{ modelClass }}.
+     *
+     * @operationId {{ panel }}Show{{ modelClass }}
+     *
+     * @tag {{ modelClass }}
+     */
+    public function handler(Request $request, {{ modelClass }} $resource)
+    {
+        return new {{ modelClass }}Transformer($resource);
+    }
+}

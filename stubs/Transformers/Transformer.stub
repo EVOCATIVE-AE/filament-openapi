@@ -1,0 +1,32 @@
+<?php
+
+namespace {{ resourceNamespace }}\OpenAPI\Transformers;
+
+use App\Models\{{ modelClass }};
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+/**
+ * @property {{ modelClass }} $resource
+ */
+class {{ modelClass }}Transformer extends JsonResource
+{
+    /**
+     * The resource that this resource collects.
+     *
+     * @var string
+     */
+    public $collects = {{ modelClass }}::class;
+
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        return [
+{{ cols }}
+        ];
+    }
+}

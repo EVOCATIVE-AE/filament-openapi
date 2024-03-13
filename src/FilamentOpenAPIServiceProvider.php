@@ -2,12 +2,9 @@
 
 namespace Evocative\FilamentOpenAPI;
 
-use Evocative\FilamentOpenAPI\Commands\FilamentOpenAPICommand;
+use Evocative\FilamentOpenAPI\Commands\MakeFilamentOpenAPICommand;
 use Evocative\FilamentOpenAPI\Testing\TestsFilamentOpenAPI;
-use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
-use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Filesystem\Filesystem;
@@ -56,6 +53,10 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
         if (file_exists($package->basePath('/../resources/views'))) {
             $package->hasViews(static::$viewNamespace);
         }
+
+        if (file_exists($package->basePath('/../routes'))) {
+            $package->hasRoutes($this->getRoutes());
+        }
     }
 
     public function packageRegistered(): void
@@ -101,11 +102,7 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
      */
     protected function getAssets(): array
     {
-        return [
-            // AlpineComponent::make('filament-openapi', __DIR__ . '/../resources/dist/components/filament-openapi.js'),
-            Css::make('filament-openapi-styles', __DIR__ . '/../resources/dist/filament-openapi.css'),
-            Js::make('filament-openapi-scripts', __DIR__ . '/../resources/dist/filament-openapi.js'),
-        ];
+        return [];
     }
 
     /**
@@ -114,7 +111,7 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
     protected function getCommands(): array
     {
         return [
-            FilamentOpenAPICommand::class,
+            MakeFilamentOpenAPICommand::class,
         ];
     }
 
@@ -131,7 +128,9 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
      */
     protected function getRoutes(): array
     {
-        return [];
+        return [
+            'web',
+        ];
     }
 
     /**
@@ -147,8 +146,6 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
      */
     protected function getMigrations(): array
     {
-        return [
-            'create_filament-openapi_table',
-        ];
+        return [];
     }
 }
