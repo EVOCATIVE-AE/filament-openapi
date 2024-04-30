@@ -129,7 +129,7 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
     protected function getRoutes(): array
     {
         return [
-            'web',
+            'api',
         ];
     }
 

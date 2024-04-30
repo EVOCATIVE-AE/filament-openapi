@@ -142,7 +142,7 @@ class MakeFilamentOpenAPICommand extends Command
             );
         }
 
-        $this->comment("Created $resource OpenAPI files.");
+        $this->comment("Created $resourceClass OpenAPI files.");
 
         return self::SUCCESS;
     }

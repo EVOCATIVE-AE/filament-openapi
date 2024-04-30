@@ -3,7 +3,10 @@
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Route;
 
-Route::group([], function () {
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'api',
+], function () {
     $panels = Filament::getPanels();
 
     foreach ($panels as $key => $panel) {
