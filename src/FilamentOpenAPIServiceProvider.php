@@ -2,6 +2,7 @@
 
 namespace Evocative\FilamentOpenAPI;
 
+use Dedoc\Scramble\ScrambleServiceProvider;
 use Evocative\FilamentOpenAPI\Commands\MakeFilamentOpenAPICommand;
 use Evocative\FilamentOpenAPI\Testing\TestsFilamentOpenAPI;
 use Filament\Support\Assets\Asset;
@@ -88,6 +89,8 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
             }
         }
 
+        $this->app->register(ScrambleServiceProvider::class, true);
+
         // Testing
         Testable::mixin(new TestsFilamentOpenAPI());
     }
@@ -129,7 +132,7 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
     protected function getRoutes(): array
     {
         return [
-            'web',
+            'api',
         ];
     }
 
