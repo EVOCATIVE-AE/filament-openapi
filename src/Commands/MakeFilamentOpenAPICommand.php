@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use ReflectionClass;
 
+use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
 
 class MakeFilamentOpenAPICommand extends Command
@@ -140,6 +141,8 @@ class MakeFilamentOpenAPICommand extends Command
                 $replacements
             );
         }
+
+        $this->comment("Created $resource OpenAPI files.");
 
         return self::SUCCESS;
     }

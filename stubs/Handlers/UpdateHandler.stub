@@ -5,6 +5,7 @@ namespace {{ resourceNamespace }}\OpenAPI\Handlers;
 use Evocative\FilamentOpenAPI\Handler;
 use {{ resourceNamespace }};
 use {{ resourceNamespace }}\OpenAPI\Transformers\{{ modelClass }}Transformer;
+use {{ resourceNamespace }}\OpenAPI\Validators\Update{{ modelClass }}Validator;
 use App\Models\{{ modelClass }};
 use Illuminate\Http\Request;
 
