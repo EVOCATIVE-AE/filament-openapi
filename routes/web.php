@@ -7,11 +7,13 @@ Route::group([], function () {
     $panels = Filament::getPanels();
 
     foreach ($panels as $key => $panel) {
-        Route::group([], function () use ($panel) {
-            /** @var \Evocative\FilamentOpenAPI\FilamentOpenAPIPlugin */
-            $oapiPlugin = $panel->getPlugin('filament-openapi');
+        if ($panel->hasPlugin('filament-openapi')) {
+            Route::group([], function () use ($panel) {
+                /** @var \Evocative\FilamentOpenAPI\FilamentOpenAPIPlugin */
+                $oapiPlugin = $panel->getPlugin('filament-openapi');
 
-            $oapiPlugin->route($panel);
-        });
+                $oapiPlugin->route($panel);
+            });
+        }
     }
 });
