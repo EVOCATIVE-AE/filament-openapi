@@ -2,6 +2,7 @@
 
 namespace Evocative\FilamentOpenAPI;
 
+use Dedoc\Scramble\ScrambleServiceProvider;
 use Evocative\FilamentOpenAPI\Commands\MakeFilamentOpenAPICommand;
 use Evocative\FilamentOpenAPI\Testing\TestsFilamentOpenAPI;
 use Filament\Support\Assets\Asset;
@@ -87,6 +88,8 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
                 ], 'filament-openapi-stubs');
             }
         }
+
+        $this->app->register(ScrambleServiceProvider::class, true);
 
         // Testing
         Testable::mixin(new TestsFilamentOpenAPI());
