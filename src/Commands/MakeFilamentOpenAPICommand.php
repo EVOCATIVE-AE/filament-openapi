@@ -102,12 +102,12 @@ class MakeFilamentOpenAPICommand extends Command
 
         $resourceNamespace = "App\\Filament\\Resources\\$resource";
         $resourceClass = Str::of($resourceNamespace)->afterLast('\\')->toString();
-        $resource = new $resourceNamespace();
+        $resource = new $resourceNamespace;
 
         $modelNamespace = $resource::getModel();
         $modelClass = Str::of($modelNamespace)->afterLast('\\')->toString();
         $modelClassPlural = Str::plural($modelClass);
-        $model = new $modelNamespace();
+        $model = new $modelNamespace;
 
         $columns = Schema::getColumnListing($model->getTable());
         $hidden = $model->getHidden();

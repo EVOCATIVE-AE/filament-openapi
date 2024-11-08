@@ -2,6 +2,4 @@
 
 namespace Evocative\FilamentOpenAPI;
 
-class FilamentOpenAPI
-{
-}
+class FilamentOpenAPI {}

@@ -60,9 +60,7 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
         }
     }
 
-    public function packageRegistered(): void
-    {
-    }
+    public function packageRegistered(): void {}
 
     public function packageBooted(): void
     {
@@ -92,7 +90,7 @@ class FilamentOpenAPIServiceProvider extends PackageServiceProvider
         $this->app->register(ScrambleServiceProvider::class, true);
 
         // Testing
-        Testable::mixin(new TestsFilamentOpenAPI());
+        Testable::mixin(new TestsFilamentOpenAPI);
     }
 
     protected function getAssetPackageName(): ?string
