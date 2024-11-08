@@ -31,7 +31,7 @@ class OpenAPIService
         $panelId = $panel->getId();
 
         Route::name("api.$panelId.$name")
-            ->prefix("$panelId/$slug")
+            ->prefix($slug)
             ->group(function (Router $route) {
                 collect(static::handlers())
                     ->each(fn ($handler) => app($handler)->route($route));

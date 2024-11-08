@@ -11,7 +11,9 @@ Route::group([
 
     foreach ($panels as $key => $panel) {
         if ($panel->hasPlugin('filament-openapi')) {
-            Route::group([], function () use ($panel) {
+            Route::group([
+                'prefix' => $key,
+            ], function () use ($panel) {
                 /** @var \Evocative\FilamentOpenAPI\FilamentOpenAPIPlugin */
                 $oapiPlugin = $panel->getPlugin('filament-openapi');
 
